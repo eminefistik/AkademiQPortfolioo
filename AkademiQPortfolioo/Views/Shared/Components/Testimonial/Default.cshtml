@@ -1,0 +1,40 @@
+﻿@model List<AkademiQPortfolioo.Data.TestimonialTable>
+@{
+    Layout = null;
+}
+
+
+<section>
+	<div class="overlay">
+		<div class="overlay-inner bg-image-holder bg-cover bg-center">
+			<img src="demo/images/image-5.jpg" alt="background">
+		</div>
+		<div class="overlay-inner bg-dark opacity-70"></div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-11 col-xl-10 mx-lg-auto text-center text-white">
+				<div class="slider dots-light dots-outside" data-slick='{"dots":true,"arrows":false}'>
+					<div>
+						
+						@foreach (var item in Model){
+						<blockquote>
+							<p class="mb-5">@item.Description </p>
+							<footer class="d-flex justify-content-center align-items-center w-lg-50 mx-auto text-left">
+								<div class="avatar">
+									<img src="@item.ImageUrl" alt="" class="avatar-img rounded-circle shadow-dark">
+								</div>
+								<div class="ml-5">
+									<h4 class="h6 mb-0">@item.NameSurname</h4>
+									<small class="d-block">@item.Title</small>
+								</div>
+							</footer>
+						</blockquote>
+						}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

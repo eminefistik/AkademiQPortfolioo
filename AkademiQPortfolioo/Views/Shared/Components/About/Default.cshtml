@@ -1,0 +1,41 @@
+﻿@model List<AkademiQPortfolioo.Data.AboutTable>
+
+@{
+	Layout = null;
+}
+
+<section id="about">
+	<div class="container">
+		<div class="section-title h2 text-center mb-8">
+			<h2 class="mb-0">Hakkımda</h2>
+			<span class="title-letter">H</span>
+		</div>
+		@foreach(var item in Model){
+            <div class="row">
+               
+			<div class="col-md-6 col-lg-4 d-none d-lg-block">
+					<img class="img-fluid w-100 rounded" src="~/documentation/fonts/emine.jpg" alt="">
+			</div>
+			<div class="col-lg-8">
+				<h3>Emine Fıstık</h3>
+			
+				<p class="mb-5">@item.Description</p>
+				<div class="row mb-8">
+					<div class="col-md-6 mb-5 mb-md-0">
+						<h4 class="mb-4">Eğitim</h4>
+						<p class="h5">@item.Education</p>
+						<p>@item.EducationDescription , 2024 - 2026</p>
+						<p class="h5">@item.AwardsTitle</p>
+						<p>@item.AwardsDecription</p>
+					</div>
+
+					
+				</div>
+				
+				<a href="#contact" class="btn btn-light scrollto">Mesaj Gönder</a>
+			</div>
+			</div>
+		}
+	</div>
+</section>
+

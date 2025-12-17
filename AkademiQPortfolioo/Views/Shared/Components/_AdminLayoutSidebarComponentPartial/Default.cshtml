@@ -1,0 +1,93 @@
+﻿
+
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<nav class="flex flex-col gap-2">
+
+    <!-- Dashboard -->
+    <a href="/Dashboard/Index"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "Dashboard"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span class="text-sm font-medium">Dashboard</span>
+    </a>
+
+    <!-- Projects -->
+    <a href="/Projects/Index"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "Projects"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">folder_open</span>
+        <span class="text-sm font-medium">Projelerim</span>
+    </a>
+
+    <!-- Skills -->
+    <a href="/SkillNew/SkillList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "SkillNew"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">code</span>
+        <span class="text-sm font-medium">Yeteneklerim</span>
+    </a>
+
+    <!-- Experience -->
+    <a href="/ExperienceNew/ExperienceList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "ExperienceNew"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">history_edu</span>
+        <span class="text-sm font-medium">Deneyimlerim</span>
+    </a>
+
+    <!-- Messages -->
+    <a href="/Contact/ContactList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "Contact"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">mail</span>
+        <span class="text-sm font-medium">Mesajlar</span>
+
+       
+    </a>
+
+    <!-- Education -->
+    <a href="/Education/EducationList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "Education"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">school</span>
+        <span class="text-sm font-medium">Eğitim</span>
+    </a>
+
+    <!-- Testimonials -->
+    <a href="/Testimonial/TestimonialList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "Testimonial"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">star</span>
+        <span class="text-sm font-medium">Referanslar</span>
+    </a>
+
+    <!-- About -->
+    <a href="/About/AboutList"
+       class="group flex items-center gap-3 rounded-full px-4 py-3 transition-all
+       @(currentController == "About"
+            ? "bg-[#6D28D9] text-white"
+            : "text-purple-200 hover:bg-[#6D28D9] hover:text-white")">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-sm font-medium">Hakkımda</span>
+    </a>
+
+</nav>
+ 

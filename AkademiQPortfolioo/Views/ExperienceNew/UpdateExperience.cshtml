@@ -1,0 +1,149 @@
+﻿@model AkademiQPortfolioo.Data.ExperienceTable
+@{
+    ViewData["Title"] = "UpdateExperience";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deneyimi Düzenle</title>
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f13ec",
+                        lilac: "#F5EFFF",
+                        border: "#e4d7ff",
+                        muted: "#6b7280",
+                        text: "#1f2937"
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        card: "0 10px 30px -15px rgba(127,19,236,.35)"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 🔥 LAYOUT EZİCİ -->
+    <style>
+        body {
+            background-color: #F5EFFF !important;
+            color: #1f2937 !important;
+        }
+
+        .experience-page,
+        .experience-page * {
+            color: #1f2937 !important;
+        }
+
+        .experience-page input,
+        .experience-page textarea {
+            background-color: #ffffff !important;
+            color: #1f2937 !important;
+            caret-color: #7f13ec;
+        }
+
+        .experience-page ::placeholder {
+            color: #9ca3af !important;
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+<div class="experience-page min-h-screen px-4 pb-32">
+
+    <!-- HEADER -->
+        <!-- HEADER -->
+        <header class="sticky top-0 z-20 -mx-4 px-4 py-6 bg-lilac/90 backdrop-blur-md flex flex-col items-center justify-center text-center">
+            <h1 class="text-2xl font-extrabold" style="color: #4A0080;">Deneyimi Düzenle</h1>
+            <p class="text-sm text-muted">Kariyer bilgilerini güncelle</p>
+        </header>
+
+    <!-- CARD -->
+    <div class="max-w-xl mx-auto mt-8 bg-white rounded-3xl p-6 shadow-card">
+
+        <form method="post" class="space-y-6">
+
+            @Html.HiddenFor(x => x.ExperienceId)
+
+            <!-- TITLE -->
+            <div>
+                <label class="text-xs font-bold uppercase text-primary ml-1">İş Ünvanı</label>
+                <input asp-for="Title"
+                       class="w-full mt-1 px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-primary outline-none"
+                       placeholder="Junior .NET Developer" />
+            </div>
+
+            <!-- DESCRIPTION TITLE -->
+            <div>
+                <label class="text-xs font-bold uppercase text-primary ml-1">Şirket / Rol</label>
+                <input asp-for="DescriptionTitle"
+                       class="w-full mt-1 px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-primary outline-none"
+                       placeholder="Acunmedya Akademi" />
+            </div>
+
+            <!-- YEAR -->
+            <div>
+                <label class="text-xs font-bold uppercase text-primary ml-1">Yıl</label>
+                <input asp-for="Year"
+                       class="w-full mt-1 px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-primary outline-none"
+                       placeholder="2024 - 2025" />
+            </div>
+
+            <!-- ICON -->
+            <div>
+                <label class="text-xs font-bold uppercase text-primary ml-1">Icon</label>
+                <input asp-for="Icon"
+                       class="w-full mt-1 px-4 py-3 rounded-xl border border-border focus:ring-2 focus:ring-primary outline-none"
+                       placeholder="work" />
+                <p class="text-xs text-muted mt-1">Material icon adı</p>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div>
+                <label class="text-xs font-bold uppercase text-muted ml-1">Açıklama</label>
+                <textarea asp-for="Description"
+                          rows="4"
+                          class="w-full mt-1 px-4 py-3 rounded-xl border border-border resize-none focus:ring-2 focus:ring-primary outline-none"
+                          placeholder="Bu pozisyonda yaptıkların..."></textarea>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="pt-4 flex gap-4">
+                <button type="submit"
+                        class="flex-1 py-4 bg-primary text-white rounded-2xl font-semibold shadow-lg shadow-primary/30 hover:scale-105 transition">
+                    Kaydet
+                </button>
+
+                <a href="/Experience/ExperienceList"
+                   class="flex-1 py-4 text-center rounded-2xl border border-border text-muted hover:bg-primary/5 transition">
+                    Vazgeç
+                </a>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

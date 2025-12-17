@@ -1,0 +1,135 @@
+﻿@model AkademiQPortfolioo.Data.ProjectTable
+@{
+    ViewData["Title"] = "ProjectCreate";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+
+<style>
+    footer, .footer, .bottom-widgets, #footer {
+        display: none !important;
+    }
+
+    body {
+        background-color: #f4f1fb !important;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: #6d5fa7;
+        margin-bottom: 8px;
+        margin-left: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 16px;
+        border-radius: 14px;
+        border: 1px solid #dcd6f7;
+        background: #ffffff;
+        color: #2e1065;
+        outline: none;
+        transition: 0.3s;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+        .form-input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+        }
+
+    .btn-save {
+        flex: 2;
+        padding: 16px;
+        background: linear-gradient(135deg, #7c3aed, #a855f7);
+        color: white;
+        border: none;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(124,58,237,0.25);
+    }
+
+    .btn-reset {
+        flex: 1;
+        padding: 16px;
+        background: #f3efff;
+        color: #4c1d95;
+        border: 1px solid #dcd6f7;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+        .btn-reset:hover {
+            background: #e9e3ff;
+            border-color: #dcd6f7;
+        }
+</style>
+
+<div style="padding: 40px; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 600px; margin: 0 auto;">
+
+        <div style="margin-bottom: 40px;">
+            <a href="/Projects/Index"
+               style="text-decoration: none; color: #7c3aed; font-size: 14px;
+               font-weight: 600; display: inline-flex; align-items: center;
+               gap: 5px; margin-bottom: 10px;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Projelerim
+            </a>
+            <h1 style="font-size: 32px; font-weight: 800; color: #2e1065; letter-spacing: -1.2px;">
+                Yeni Proje
+            </h1>
+        </div>
+
+        <form action="/Projects/ProjectCreate" method="post">
+
+            <div>
+                <label class="form-label">Proje Adı & Teknolojisi</label>
+                <input type="text" name="Title"
+                       placeholder="Örn: React Tabanlı Finans Uygulaması"
+                       class="form-input" required />
+            </div>
+
+            <div>
+                <label class="form-label">Proje Kategorisi</label>
+                <input type="text" name="Subtitle"
+                       placeholder="Örn: Web Uygulaması & Mobil Uygulama"
+                       class="form-input" required />
+            </div>
+
+            <div>
+                <label class="form-label">Görsel Adresi</label>
+                <input type="text" name="ImageUrl"
+                       placeholder="https://resim-adresi.com/proje.jpg"
+                       class="form-input" required />
+            </div>
+
+            <div style="display: flex; gap: 15px; margin-top: 10px;">
+                <button type="submit" class="btn-save"
+                        onmouseover="this.style.background='linear-gradient(135deg,#8b5cf6,#c084fc)'"
+                        onmouseout="this.style.background='linear-gradient(135deg,#7c3aed,#a855f7)'">
+                    Yeni Projeyi Ekle
+                </button>
+
+                <button type="reset" class="btn-reset"
+                        onmouseover="this.style.background='#e9e3ff'"
+                        onmouseout="this.style.background='#f3efff'">
+                    Temizle
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@model List<AkademiQPortfolioo.Data.EducationTable>
+@{
+    ViewData["Title"] = "EducationList";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Education Management</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7B2CF5",
+                        lilabg: "#F6EFFF",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+
+<body class="font-display text-gray-800">
+
+    <div class="min-h-screen bg-gradient-to-br from-[#faf6ff] via-[#f6efff] to-[#efe6ff]">
+
+        <!-- HEADER -->
+        <header class="sticky top-0 z-10 backdrop-blur bg-lilabg/70 px-6 py-6 border-b border-purple-100">
+            <div class="max-w-[900px] mx-auto flex justify-between items-center">
+                <h1 class="text-3xl font-extrabold bg-gradient-to-r from-purple-700 to-fuchsia-500 bg-clip-text text-transparent">
+                    Eğitim Geçmişi
+                </h1>
+
+                <a href="/Education/CreateEducation">
+                    <button class="flex items-center gap-2 px-6 py-2.5 rounded-xl text-white
+                               bg-gradient-to-r from-[#8B3CF6] to-[#C026FF]
+                               shadow-lg shadow-purple-400/30
+                               hover:brightness-110 active:scale-95 transition">
+                        <span class="material-symbols-outlined">add</span>
+                        Yeni Eğitim Ekle
+                    </button>
+                </a>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main class="px-6 py-10 flex flex-col items-center gap-7">
+
+            @foreach (var item in Model)
+            {
+                <div class="bg-white/80 backdrop-blur w-full max-w-[760px] rounded-2xl p-6 border border-purple-100
+                        hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-200/40 transition-all">
+
+                    <div class="flex justify-between">
+                        <div class="flex gap-4">
+                            <div class="w-14 h-14 flex items-center justify-center
+                                    bg-gradient-to-br from-[#8B3CF6] to-[#C026FF]
+                                    rounded-xl text-white shadow">
+                                <span class="material-symbols-outlined text-[30px]">school</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <h3 class="font-bold text-lg" style="color: #581c87 !important; margin: 0 !important; line-height: 1.2 !important;">
+                                    @item.EducationName
+                                </h3>
+                                <p class="text-sm font-medium" style="color: #581c87 !important; opacity: 0.7 !important; margin: 0 !important;">
+                                    @item.EducationYear
+                                </p>
+                            </div>
+                        </div>
+
+                        <span class="material-symbols-outlined text-gray-300">drag_indicator</span>
+                    </div>
+
+                    <p class="text-sm text-gray-600 mt-4">
+                        @item.EducationDescription
+                    </p>
+
+                    <div class="flex justify-end gap-3 mt-6 border-t pt-4">
+
+                        
+                        <!-- DÜZENLE -->
+                        <a href="/Education/UpdateEducation/@item.EducationId"
+                           class="inline-flex items-center px-3 py-1.5
+                                           bg-purple-50 text-purple-700
+                                           hover:bg-purple-100 rounded-md transition-colors">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                            Düzenle
+                        </a>
+
+                       
+                        
+
+                        <!-- SİL -->     <a href="/Education/DeleteEducation/@item.EducationId"
+                                           onclick="return confirm('Silmek istediğine emin misin?')"
+                                           class="inline-flex items-center px-3 py-1.5
+                                           bg-pink-50 text-pink-600
+                                           hover:bg-pink-100 rounded-md transition-colors">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                            Sil
+                        </a>
+                     
+
+                    </div>
+                </div>
+            }
+
+        </main>
+
+    </div>
+
+</body>
+</html>

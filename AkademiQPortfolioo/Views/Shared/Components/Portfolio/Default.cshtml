@@ -1,0 +1,69 @@
+﻿@model List<AkademiQPortfolioo.Data.ProjectTable>
+@{
+    Layout = null;
+}
+
+
+
+<section id="portfolio">
+    <div class="container">
+
+        <!-- Section Title -->
+        <div class="row mb-5">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center">
+                <div class="section-title mb-3">
+                    <h2 class="mb-0">Projelerim</h2>
+                    <span class="title-letter">P</span>
+                </div>
+
+                <!-- Filter -->
+                <nav class="portfolio-filter isotope-filter">
+                    <ul class="list-inline justify-content-center mb-0">
+                        <li class="list-inline-item">
+                            <a href="#" class="active" data-filter="*">All</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" data-filter=".web">Web</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" data-filter=".brand">Brand</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" data-filter=".design">Design</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Portfolio Items -->
+        <div class="row portfolio-container">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4 isotope-item @item.Category">
+
+                    <div class="portfolio-item position-relative overflow-hidden rounded shadow-sm">
+
+                        <a href="#">
+                            <div class="item-media">
+                                <img src="@item.Image" class="img-fluid w-100" alt="@item.Title">
+                            </div>
+
+                            <div class="item-overlay position-absolute w-100 h-100 top-0 start-0 bg-dark opacity-75"></div>
+
+                            <div class="item-details position-absolute bottom-0 start-0 p-3 text-white">
+                                <h5 class="mb-1">@item.Title</h5>
+                                <p class="mb-0 small">@item.ProjectName</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>

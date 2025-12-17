@@ -1,0 +1,164 @@
+﻿@model AkademiQPortfolioo.Data.ExperienceTable
+@{
+    ViewData["Title"] = "CreateExperience";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deneyim Ekle</title>
+
+    <!-- Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f13ec",
+                        lilac: "#F5EFFF"
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        card: "0 10px 30px -15px rgba(127,19,236,.35)"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-display antialiased">
+
+<div class="min-h-screen bg-lilac px-4 pb-32">
+
+        <!-- HEADER -->
+        <header class="sticky top-0 z-20 -mx-4 px-4 py-5 bg-lilac/90 backdrop-blur-md flex flex-col items-center justify-center text-center">
+            <h1 class="text-2xl font-extrabold" style="color: #4A0080;">Yeni Deneyim Ekleme Sayfası</h1>
+            <p class="text-sm text-slate-500">Deneyim bilgilerini doldur</p>
+        </header>
+    <!-- FORM -->
+    <form method="post"
+          action="/ExperienceNew/CreateExperience"
+          class="max-w-2xl mx-auto mt-10 bg-white rounded-3xl p-8 shadow-card space-y-6">
+
+        <!-- TITLE -->
+        <div>
+            <label class="text-sm font-semibold text-slate-700">İş Unvanı</label>
+            <input name="Title"
+                   class="mt-2 w-full h-14 rounded-2xl
+                          border-slate-200
+                          text-slate-900 placeholder:text-slate-400
+                          focus:border-primary focus:ring-primary"
+                   placeholder="Frontend Geliştirici" />
+        </div>
+
+        <!-- COMPANY -->
+        <div>
+            <label class="text-sm font-semibold text-slate-700">Şirket</label>
+            <input name="DescriptionTitle"
+                   class="mt-2 w-full h-14 rounded-2xl
+                          border-slate-200
+                          text-slate-900 placeholder:text-slate-400
+                          focus:border-primary focus:ring-primary"
+                   placeholder="Firma adı" />
+        </div>
+
+        <!-- DATES -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Başlangıç Tarihi</label>
+                <input type="month"
+                       name="StartDate"
+                       class="mt-2 w-full h-14 rounded-2xl
+                              border-slate-200
+                              text-slate-900
+                              focus:border-primary focus:ring-primary" />
+            </div>
+
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Bitiş Tarihi</label>
+                <input id="endDate"
+                       type="month"
+                       name="EndDate"
+                       class="mt-2 w-full h-14 rounded-2xl
+                              border-slate-200
+                              text-slate-900
+                              focus:border-primary focus:ring-primary" />
+            </div>
+        </div>
+
+        <!-- CURRENT -->
+        <div class="flex items-center justify-between rounded-2xl bg-primary/5 border border-primary/20 px-5 py-4">
+            <div class="flex items-center gap-3">
+                <div class="size-10 rounded-xl bg-primary text-white flex items-center justify-center">
+                    <span class="material-icons-round">work</span>
+                </div>
+                <p class="font-medium text-slate-800">
+                    Şu anda burada çalışıyorum
+                </p>
+            </div>
+
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input id="isCurrent"
+                       name="IsCurrent"
+                       type="checkbox"
+                       class="sr-only peer"
+                       onchange="toggleEndDate()" />
+                <div class="w-11 h-6 bg-slate-300 rounded-full peer-checked:bg-primary
+                            after:content-[''] after:absolute after:top-0.5 after:left-[2px]
+                            after:bg-white after:rounded-full after:h-5 after:w-5
+                            after:transition-all peer-checked:after:translate-x-full">
+                </div>
+            </label>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div>
+            <label class="text-sm font-semibold text-slate-700">Açıklama</label>
+            <textarea name="Description"
+                      class="mt-2 w-full min-h-[160px] rounded-2xl
+                             border-slate-200
+                             text-slate-900 placeholder:text-slate-400
+                             focus:border-primary focus:ring-primary"
+                      placeholder="Sorumluluklar, projeler, kullanılan teknolojiler..."></textarea>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-4 pt-4">
+            <button type="submit"
+                    class="flex-1 h-14 bg-primary text-white font-bold rounded-full shadow-lg hover:scale-105 transition">
+                Deneyimi Kaydet
+            </button>
+
+            <a href="/ExperienceList"
+               class="flex-1 h-14 flex items-center justify-center rounded-full border border-slate-300 text-slate-600 hover:bg-slate-100 transition">
+                Vazgeç
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function toggleEndDate() {
+        const checkbox = document.getElementById("isCurrent");
+        const endDate = document.getElementById("endDate");
+
+        endDate.disabled = checkbox.checked;
+        if (checkbox.checked) endDate.value = "";
+    }
+</script>
+
+</body>
+</html>

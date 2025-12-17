@@ -1,0 +1,47 @@
+﻿@model List<AkademiQPortfolioo.Data.SkilTable>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Burası yetenekler sayfası</h1>
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>SkillId</td>
+                <td>Title</td>
+                <td>Levels</td>
+                <td>Test</td>
+                <td>Güncelle</td>
+                <td>Sil</td>
+                
+                
+            </tr>
+        </thead>
+
+        <tbody>
+           @foreach (var item in Model)
+            {
+                <tr>
+                        <td>@item.SkilId</td>
+                        <td>@item.Title</td>
+                        <td>@item.Levels</td>
+                        <td>@item.Test</td>
+
+                    <td><a href="/Skill/UpdateSkill/@item.SkilId" class="btn btn-success">Güncelle</a></td>
+                    <td><a href="/Skill/DeleteSkill/@item.SkilId" class="btn btn-danger">Sil</a></td>
+                            
+                                      
+                </tr>
+               
+           
+            }
+
+
+        </tbody>
+
+    </table>
+    <a href="/Skill/CreateSkill/" class="btn btn-primary">Yeni Ekle</a>
+</div>

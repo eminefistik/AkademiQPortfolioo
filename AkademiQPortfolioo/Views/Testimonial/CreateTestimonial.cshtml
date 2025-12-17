@@ -1,0 +1,122 @@
+﻿@model AkademiQPortfolioo.Data.TestimonialTable
+@{
+    ViewData["Title"] = "CreateTestimonial";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yeni Referans</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#7f13ec",
+                        lilac: "#F5EFFF"
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        card: "0 10px 30px -15px rgba(127,19,236,.35)"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-display antialiased">
+
+    <div class="min-h-screen bg-lilac px-4 pb-32">
+
+        <header class="sticky top-0 z-20 -mx-4 px-4 py-4 bg-lilac/90 backdrop-blur-md flex items-center justify-between">
+            <a href="/Testimonial/TestimonialList"
+               class="h-10 w-10 flex items-center justify-center rounded-full hover:bg-black/5 transition">
+                <span class="material-symbols-outlined text-slate-800">arrow_back_ios_new</span>
+            </a>
+            <h1 class="text-lg font-bold text-slate-900">Yeni Referans</h1>
+            <div class="w-10"></div>
+        </header>
+
+        <form action="/Testimonial/CreateTestimonial" method="post">
+
+            <main class="mt-6 space-y-6 flex flex-col items-center">
+
+                <!-- AVATAR -->
+                <div class="flex flex-col items-center">
+                    <div class="relative group cursor-pointer">
+                        <div class="h-28 w-28 rounded-full bg-white shadow-card flex items-center justify-center ring-4 ring-white">
+                            <span class="material-symbols-outlined text-4xl text-primary/40">
+                                add_a_photo
+                            </span>
+                        </div>
+                        <div class="absolute bottom-1 right-1 h-8 w-8 bg-primary rounded-full flex items-center justify-center text-white ring-2 ring-white">
+                            <span class="material-symbols-outlined text-sm">edit</span>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-sm font-medium text-slate-500">Profil Fotoğrafı</p>
+                </div>
+
+                <!-- CARD -->
+                <div class="bg-white rounded-3xl p-6 shadow-card space-y-5 w-full max-w-[760px]">
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">
+                            Tam Adı
+                        </label>
+                        <input asp-for="NameSurname"
+                               placeholder="Örn: Ayşe Yılmaz"
+                               class="w-full h-12 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-primary/40 transition px-4 text-slate-800" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">
+                            Mesleği / Unvanı
+                        </label>
+                        <input asp-for="Title"
+                               placeholder="Örn: Senior UI Designer"
+                               class="w-full h-12 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-primary/40 transition px-4 text-slate-800" />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-1">
+                            Referans Yorumu
+                        </label>
+                        <textarea asp-for="Description"
+                                  rows="5"
+                                  placeholder="Referans içeriğini buraya yazın..."
+                                  class="w-full rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-primary/40 transition p-4 resize-none text-slate-800 leading-relaxed"></textarea>
+                    </div>
+
+                </div>
+
+            </main>
+
+            <!-- SAVE -->
+            <div class="fixed bottom-28 left-1/2 -translate-x-[58%] w-full max-w-[760px] z-30 flex justify-end px-4">
+
+
+                <button class="w-[320px] h-12 bg-primary hover:bg-[#6a10c5] text-white rounded-2xl text-base font-semibold shadow-lg active:scale-[0.97] transition flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[20px]">check</span>
+                    Referansı Kaydet
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

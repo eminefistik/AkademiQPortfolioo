@@ -1,0 +1,21 @@
+﻿@model AkademiQPortfolioo.Data.SkilTable
+@{
+    ViewData["Title"] = "CreateSkill";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<h2>Yeni Yetenekler  Ekleme Sayfası</h2>
+
+<form method="post">
+    <label>ID</label>
+    <input type="text" class="form-control" name="SkilId" value="" readonly /> @* readonly ilgili satırı dokunulamaz yapıyor  *@
+    <label>Title</label>
+    <input type="text" class="form-control" name="Title" value="" />
+    <label>Level</label>
+    <input type="text" class="form-control" name="Levels" value="" />
+    <label>Test</label>
+    <input type="text" class="form-control" name="Test" value="" />
+    <br />
+    <button type="submit" class="btn btn-success">Ekle</button>
+</form>

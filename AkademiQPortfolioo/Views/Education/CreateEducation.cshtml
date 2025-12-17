@@ -1,0 +1,186 @@
+﻿@model AkademiQPortfolioo.Data.EducationTable
+@{
+    ViewData["Title"] = "CreateEducation";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Create Education Admin Page</title>
+
+    <!-- FORCE RESET -->
+    <style>
+        /* ---- LAYOUT OVERRIDE RESET ---- */
+        html, body {
+            all: unset;
+            display: block;
+            width: 100% !important;
+            min-height: 100vh !important;
+            background: #f3e8ff !important;
+            font-family: 'Lexend', sans-serif !important;
+        }
+
+            body * {
+                box-sizing: border-box !important;
+            }
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #f3e8ff !important;
+        }
+
+            /* Kill layout wrappers */
+            body > * {
+                max-width: none !important;
+            }
+
+        /* Force container behavior */
+        main, header {
+            width: 100% !important;
+            max-width: 900px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* Override any inherited colors */
+        * {
+            background-color: unset;
+            color: unset;
+        }
+
+        /* Prevent layout font overrides */
+        input, textarea, button {
+            font-family: 'Lexend', sans-serif !important;
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7f13ec",
+                        "background-light": "#f3e8ff",
+                        "background-dark": "#191022",
+                        "card-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif !important;
+        }
+
+        .ios-shadow {
+            box-shadow: 0 4px 20px -2px rgba(127, 19, 236, 0.1) !important;
+        }
+
+        .tap-active:active {
+            transform: scale(0.97);
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light min-h-screen flex flex-col items-center">
+
+    <header class="w-full max-w-[900px] flex items-center bg-transparent sticky top-0 z-10 px-6 py-4 border-b border-primary/10">
+        <a href="/Education/EducationList"
+        <button class="text-primary flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors">
+            <span class="material-symbols-outlined">arrow_back_ios</span>
+        </button>
+        </a>
+        <h1 class="flex-1 text-center text-[#5b21b6] font-bold text-lg mr-8">Eğitim Ekleme Sayfası</h1>
+
+    </header>
+
+    <main class="w-full max-w-[900px] p-8 flex flex-col gap-6">
+
+        <div class="space-y-1">
+            <h2 class="text-primary text-2xl font-bold tracking-tight">
+                Yeni Kayıt
+            </h2>
+            <p class="text-[#756189] text-sm">Portföyünüze yeni bir eğitimsel dönüm noktası ekleyin.</p>
+        </div>
+
+        <form action="/Education/CreateEducation" method="post">
+
+            <div class="bg-white p-6 rounded-xl ios-shadow border border-primary/5 space-y-5">
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-[#141118] text-sm font-semibold flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                        Başlangıç ve bitiş Yılı
+                    </label>
+                    <input asp-for="EducationYear"
+                           class="form-input w-full rounded-lg border-[#e0dbe6] text-[#141118] focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 px-4 text-base placeholder:text-[#b0a0c0]"
+                           placeholder="Örneğin 2020 - 2024"
+                           type="text" />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-[#141118] text-sm font-semibold flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">school</span>
+                        Eğitim Unvanı
+                    </label>
+                    <input asp-for="EducationName"
+                           class="form-input w-full rounded-lg border-[#e0dbe6] text-[#141118] focus:border-primary focus:ring-2 focus:ring-primary/20 h-14 px-4 text-base placeholder:text-[#b0a0c0]"
+                           placeholder="Örneğin, Bilgisayar Bilimleri Lisansı"
+                           type="text" />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-[#141118] text-sm font-semibold flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-sm">description</span>
+                        Açıklama
+                    </label>
+                    <textarea asp-for="EducationDescription"
+                              class="form-input w-full rounded-lg border-[#e0dbe6] text-[#141118] focus:border-primary focus:ring-2 focus:ring-primary/20 min-h-[140px] p-4 text-base placeholder:text-[#b0a0c0] resize-none"
+                              placeholder="Başlıca başarılarınızı, not ortalamanızı veya ilgili derslerinizi açıklayın..."></textarea>
+                </div>
+
+                <div class="bg-primary/5 p-4 rounded-lg flex gap-3 items-start">
+                    <span class="material-symbols-outlined text-primary text-lg">info</span>
+                    <p class="text-xs text-[#756189] leading-relaxed">
+                        İpucu: Özlü olun ancak işe alım uzmanlarının dikkatini çekmek için önemli projeleri veya ödülleri vurgulayın.
+                    </p>
+                </div>
+
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg h-14 rounded-lg transition-all tap-active flex items-center justify-center gap-2 ios-shadow mt-2">
+                <span class="material-symbols-outlined">save</span>
+                Kaydet
+            </button>
+
+        </form>
+
+    </main>
+
+    
+    <div class="h-10"></div> 
+
+</body>
+</html>

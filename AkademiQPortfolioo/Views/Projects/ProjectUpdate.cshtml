@@ -1,0 +1,180 @@
+﻿@model AkademiQPortfolioo.Data.ProjectTable
+@{
+    ViewData["Title"] = "ProjectUpdate";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<style>
+    footer, .footer, .bottom-widgets, #footer {
+        display: none !important;
+    }
+
+    body {
+        background-color: #f4f1fb !important;
+    }
+
+    .update-container {
+        display: flex;
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .preview-card {
+        flex: 1;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 20px;
+        border: 1px solid #e9e3ff;
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: 250px;
+        border-radius: 16px;
+        object-fit: cover;
+        background: #f3efff;
+        margin-bottom: 15px;
+        border: 1px solid #e9e3ff;
+    }
+
+    .form-side {
+        flex: 1.5;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 700;
+        color: #6d5fa7;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 16px;
+        border-radius: 14px;
+        border: 1px solid #dcd6f7;
+        background: #ffffff;
+        color: #2e1065;
+        outline: none;
+        transition: 0.3s;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+        .form-input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+        }
+
+    .btn-update {
+        flex: 2;
+        padding: 16px;
+        background: linear-gradient(135deg, #7c3aed, #a855f7);
+        color: white;
+        border: none;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(124,58,237,0.25);
+    }
+
+    .btn-back {
+        flex: 1;
+        padding: 16px;
+        background: #f3efff;
+        color: #4c1d95;
+        border: 1px solid #dcd6f7;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+    }
+</style>
+
+<div style="padding: 40px; font-family: 'Inter', sans-serif;">
+
+    <div style="max-width: 1100px; margin: 0 auto 30px auto;">
+        <a href="/Projects/Index/"
+           style="text-decoration: none; color: #7c3aed; font-size: 14px;
+           font-weight: 600; display: inline-flex; align-items: center;
+           gap: 5px; margin-bottom: 10px;">
+            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+            Listeye Dön
+        </a>
+        <h1 style="font-size: 32px; font-weight: 800; color: #2e1065; letter-spacing: -1.2px;">
+            Projeyi Düzenle
+        </h1>
+    </div>
+
+    <div class="update-container">
+
+        <div class="preview-card">
+            <h4 style="font-size: 14px; margin-bottom: 15px; color: #2e1065;">
+                Mevcut Görsel
+            </h4>
+            <img src="@Model.Image" id="projectImagePreview"
+                 class="preview-image"
+                 onerror="this.src='https://placehold.co/600x400?text=Görsel+Bulunamadı';" />
+            <div style="padding: 10px 5px;">
+                <p style="margin: 0; font-size: 16px; font-weight: 700; color: #2e1065;">
+                    @Model.Title
+                </p>
+                <p style="margin: 5px 0 0 0; font-size: 13px; color: #6d5fa7;">
+                    @Model.Title
+                </p>
+            </div>
+        </div>
+
+        <div class="form-side">
+            <form action="/Projects/ProjectUpdate/" method="post">
+                @Html.HiddenFor(x => x.ProjectId)
+
+                <div>
+                    <label class="form-label">Proje Adı & Teknoloji</label>
+                    <input type="text" name="Title" value="@Model.Title" class="form-input" required />
+                </div>
+
+                <div>
+                    <label class="form-label">Proje Kategorisi</label>
+                    <input type="text" name="Subtitle" value="@Model.Title" class="form-input" required />
+                </div>
+
+                <div>
+                    <label class="form-label">Görsel URL</label>
+                    <input type="text" name="ImageUrl" value="@Model.Image"
+                           class="form-input" id="imageUrlInput" required />
+                </div>
+
+                <div style="display: flex; gap: 15px; margin-top: 10px;">
+                    <button type="submit" class="btn-update"
+                            onmouseover="this.style.background='linear-gradient(135deg,#8b5cf6,#c084fc)'"
+                            onmouseout="this.style.background='linear-gradient(135deg,#7c3aed,#a855f7)'">
+                        Değişiklikleri Kaydet
+                    </button>
+                    <a href="/Projects/Index/" class="btn-back"
+                       onmouseover="this.style.background='#e9e3ff'"
+                       onmouseout="this.style.background='#f3efff'">
+                        Vazgeç
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('imageUrlInput').addEventListener('input', function() {
+        document.getElementById('projectImagePreview').src = this.value;
+    });
+</script>

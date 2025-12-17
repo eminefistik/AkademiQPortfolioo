@@ -1,0 +1,36 @@
+﻿@model List<AkademiQPortfolioo.Data.ServicesTable>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h1>Index</h1>
+
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>DeneyimID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ExperienceId</td>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Icon</td>
+                    <td><a href="/Services/UpdateServices/@item.ExperienceId" class="btn btn-success">Güncelle</a></td>
+                    <td><a href="/Services/DeleteServices/@item.ExperienceId" class="btn btn-danger">Sil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

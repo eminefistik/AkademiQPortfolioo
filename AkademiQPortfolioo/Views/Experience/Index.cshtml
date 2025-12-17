@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+@* <h1>Burası deneyimler sayfası</h1>
+
+<div clas="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Experience Id</td>
+                <td>Title</td>
+                <td>Level</td>
+                <td>Created Table</td>
+                <td>Sil</td>
+                <td>Güncelle</td>
+               
+
+            </tr>
+        </thead>
+
+
+
+        <tbody>
+            <tr>
+                <td>3</td>
+                <td>C#</td>
+                <td>85</td>
+                <td>01.01.2020</td>
+                <td><a href="/Experience/UpdateExperience/" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Experience/DeleteExperience/" class="btn btn-danger">Sil</a></td>
+            </tr>         
+            
+            <tr>
+                <td>4</td>
+                <td>C++</td>
+                <td>65</td>
+                <td>01.01.2024</td>
+                <td><a href="/Experience/UpdateExperience/" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Experience/DeleteExperience/" class="btn btn-danger">Sil</a></td>
+            </tr>  
+            <tr>
+                <td>5</td>
+                <td>C#</td>
+                <td>45</td>
+                <td>09.01.2024</td>
+                <td><a href="/Experience/UpdateExperience/" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Experience/DeleteExperience/" class="btn btn-danger">Sil</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/Experience/CreateExperience/" class="btn btn-secondary">Yeni Deneyim Ekle</a>
+</div> *@
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Deneyim Yönetimi</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                primary: "#8B5CF6", // Neon purple/lilac shade
+                "primary-dark": "#7C3AED",
+                "background-light": "#F3F4F6",
+                "background-dark": "#111827",
+                "card-light": "#FFFFFF",
+                "card-dark": "#1F2937",
+                "text-main-light": "#1F2937",
+                "text-main-dark": "#F9FAFB",
+                "text-sub-light": "#6B7280",
+                "text-sub-dark": "#9CA3AF",
+              },
+              fontFamily: {
+                sans: ["Inter", "sans-serif"],
+              },
+              borderRadius: {
+                DEFAULT: "1rem",
+                'xl': '1rem',
+                '2xl': '1.5rem',
+              },
+            },
+          },
+        };
+    </script>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans text-text-main-light dark:text-text-main-dark antialiased transition-colors duration-200">
+    <div class="max-w-md mx-auto min-h-screen relative pb-20">
+        <header class="pt-8 pb-6 px-5 sticky top-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md z-10">
+            <div class="flex flex-col gap-2">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Deneyim
+                    </h1>
+                    <button class="bg-primary hover:bg-primary-dark text-white p-3 rounded-full shadow-lg shadow-purple-500/30 transition-all active:scale-95 flex items-center justify-center">
+                        <span class="material-icons-round text-xl">add</span>
+                    </button>
+                </div>
+                <p class="text-sm text-text-sub-light dark:text-text-sub-dark font-medium">
+                    Kariyer yolculuğunu buradan düzenle.
+                </p>
+            </div>
+            <button class="w-full mt-6 bg-primary text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
+                <span class="material-icons-round">add_circle_outline</span>
+                Yeni Deneyim Ekle
+            </button>
+        </header>
+        <main class="px-5 space-y-4">
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-primary shrink-0">
+                            <span class="material-icons-round text-2xl">code</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold leading-tight">Junior .NET Developer</h2>
+                            <p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Acunmedya Akademi</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 py-1 px-2 rounded-lg whitespace-nowrap">
+                        Kasım 2024 - Haz 2025
+                    </span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                    .NET Core ve MVC alanlarında projeler geliştirdim. Backend mimarisi üzerine çalıştım.
+                </p>
+                <div class="flex items-center gap-3 border-t border-gray-100 dark:border-gray-700 pt-4">
+                    <button class="flex-1 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-gray-200">
+                        <span class="material-icons-round text-base">edit</span>
+                        Düzenle
+                    </button>
+                    <button class="flex-1 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-red-200">
+                        <span class="material-icons-round text-base">delete</span>
+                        Sil
+                    </button>
+                </div>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-500 shrink-0">
+                            <span class="material-icons-round text-2xl">work_outline</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold leading-tight">Proje Yönetimi Stajyeri</h2>
+                            <p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Sca Social</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 py-1 px-2 rounded-lg whitespace-nowrap">
+                        Eylül 2025 - Kasım 2025
+                    </span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                    Yönetim organizasyon, bilişim hukuku, veri bilimi ve proje yönetimi gibi konularda eğitim aldım.
+                </p>
+                <div class="flex items-center gap-3 border-t border-gray-100 dark:border-gray-700 pt-4">
+                    <button class="flex-1 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-gray-200">
+                        <span class="material-icons-round text-base">edit</span>
+                        Düzenle
+                    </button>
+                    <button class="flex-1 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-red-200">
+                        <span class="material-icons-round text-base">delete</span>
+                        Sil
+                    </button>
+                </div>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-900/20 flex items-center justify-center text-teal-500 shrink-0">
+                            <span class="material-icons-round text-2xl">monitor</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold leading-tight">Junior .NET Developer</h2>
+                            <p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">AkademiQ AI School</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-bold bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 py-1 px-2 rounded-lg flex items-center gap-1 whitespace-nowrap">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                        Devam Ediyor
+                    </span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-5 leading-relaxed">
+                    .NET Core alanında projeler geliştiriyorum. Yapay zeka entegrasyonları üzerine çalışmalar yapıyorum.
+                </p>
+                <div class="flex items-center gap-3 border-t border-gray-100 dark:border-gray-700 pt-4">
+                    <button class="flex-1 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-gray-200">
+                        <span class="material-icons-round text-base">edit</span>
+                        Düzenle
+                    </button>
+                    <button class="flex-1 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 active:bg-red-200">
+                        <span class="material-icons-round text-base">delete</span>
+                        Sil
+                    </button>
+                </div>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors opacity-60">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500 shrink-0">
+                            <span class="material-icons-round text-2xl">school</span>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold leading-tight">Stajyer</h2>
+                            <p class="text-sm font-medium text-text-sub-light dark:text-text-sub-dark">Tech Startup</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 border-t border-gray-100 dark:border-gray-700 pt-4 mt-4">
+                    <div class="h-8 bg-gray-100 dark:bg-gray-800 rounded w-full"></div>
+                    <div class="h-8 bg-gray-100 dark:bg-gray-800 rounded w-full"></div>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+    <script>
+        // Simple script to toggle dark mode for demo purposes if clicked on title
+        document.querySelector('h1').addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+
+</body>
+</html>
